@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library - Home</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">📚 DigitalLib</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active-nav">Home</a></li>
+                <li><a href="./catalog.html">Catalog</a></li>
+                <li><a href="./my_books.html">My Books</a></li>
+                <li><a href="./about.html">About</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary" onclick="showModal('login')">Login</button>
+                <button class="btn btn-primary" onclick="showModal('signup')">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Discover Your Next Great Read</h1>
+                <p>Access thousands of books, journals, and digital resources from anywhere</p>
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="Search for books, authors, or topics..." id="searchInput" onkeyup="checkEnter(event)">
+                    <button class="search-btn" onclick="searchBooks('index')">🔍</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <div class="container content-wrapper">
+                
+                
+
+                    <h2 class="section-title">Featured Books</h2>
+                    
+                    <div class="categories home-categories">
+                        
+                        <div class="category-chip active" data-category="all" onclick="filterBooks(this, 'home')">All</div>
+                        <div class="category-chip" data-category="fiction" onclick="filterBooks(this, 'home')">Fiction</div>
+                        <div class="category-chip" data-category="science" onclick="filterBooks(this, 'home')">Science</div>
+                        <div class="category-chip" data-category="history" onclick="filterBooks(this, 'home')">History</div>
+                        <div class="category-chip" data-category="technology" onclick="filterBooks(this, 'home')">Technology</div>
+                        <div class="category-chip" data-category="biography" onclick="filterBooks(this, 'home')">Biography</div>
+                    </div>
+
+                    <div class="book-grid" id="homeBookGrid">
+
+                        </div>
+                        <div style="text-align: center; margin-top: 3rem;">
+                            <a href="catalog.html" class="btn btn-primary">View Full Catalog →</a>
+                        </div>
+                        <div id="homeSection" class="section">
+                                            <div class="stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-number">25,847</div>
+                                                    <div class="stat-label">Books Available</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-number">5,293</div>
+                                                    <div class="stat-label">Active Members</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-number">1,842</div>
+                                                    <div class="stat-label">Books Borrowed Today</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-number">98%</div>
+                                                    <div class="stat-label">Satisfaction Rate</div>
+                                                </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section footer-brand">
+                <a href="index.html" class="logo">📚 DigitalLib</a>
+                <p>&copy; 2025 DigitalLib. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Discover</h4>
+                <ul>
+                    <li><a href="catalog.html">All Titles</a></li>
+                    <li><a href="#">Featured Authors</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Popular Topics</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Help & Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#">Newsletter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal('login')">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal('signup')">&times;</span>
+            <h2>Create Your Account</h2>
+            <form>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label>Member Type</label>
+                    <select>
+                        <option>Student</option>
+                        <option>Faculty</option>
+                        <option>General Public</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
